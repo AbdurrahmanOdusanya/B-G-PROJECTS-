@@ -10,11 +10,11 @@ interface FinalCTAProps {
 
 export function FinalCTA({ onEnquireClick }: FinalCTAProps) {
   return (
-    <section className="relative py-32 sm:py-40 md:py-48 px-6 sm:px-12 md:px-16 lg:px-24 bg-white text-neutral-900 overflow-hidden border-t border-neutral-100">
+    <section className="relative py-20 sm:py-28 md:py-36 lg:py-48 px-4 sm:px-8 md:px-12 lg:px-24 bg-white text-neutral-900 overflow-hidden border-t border-neutral-100">
       <div className="max-w-4xl mx-auto text-center relative z-10">
         {/* Large, Confident Headline */}
         <RevealOnScroll delay={0} yOffset={24}>
-          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-accent italic font-normal text-neutral-950 tracking-tight leading-[1.08] mb-6 select-none">
+          <h2 className="text-3xl min-[380px]:text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-accent italic font-normal text-neutral-950 tracking-tight leading-[1.12] sm:leading-[1.08] mb-4 sm:mb-6 select-none">
             Ready To Find
             <br />
             <span className="font-accent italic font-normal text-neutral-800">Your Next Home?</span>

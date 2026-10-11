@@ -15,14 +15,12 @@ export function FeaturedProjects({ onEnquireForProject }: FeaturedProjectsProps)
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   return (
-    <section id="projects" className="py-28 sm:py-36 md:py-44 px-6 sm:px-12 md:px-16 lg:px-24 bg-[#fbfbfa] text-neutral-900 border-t border-neutral-200/60">
+    <section id="projects" className="py-20 sm:py-28 md:py-36 lg:py-44 px-4 sm:px-8 md:px-12 lg:px-24 bg-[#fbfbfa] text-neutral-900 border-t border-neutral-200/60">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 sm:mb-20 gap-6">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 sm:mb-16 md:mb-20 gap-4 sm:gap-6">
           <div>
-
-
-            <RevealOnScroll delay={0.08} yOffset={30}>
+            <RevealOnScroll delay={0.08} yOffset={24}>
               <h2 className="text-3xl sm:text-5xl md:text-6xl font-accent italic font-normal text-neutral-950 leading-tight tracking-tight">
                 Featured Projects
               </h2>
@@ -31,7 +29,7 @@ export function FeaturedProjects({ onEnquireForProject }: FeaturedProjectsProps)
         </div>
 
         {/* Project Cards Grid with Large Image-Led Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 sm:gap-12 lg:gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10 lg:gap-12">
           {FEATURED_PROJECTS.slice(0, 3).map((project, idx) => (
             <RevealOnScroll
               key={project.id}
@@ -44,7 +42,7 @@ export function FeaturedProjects({ onEnquireForProject }: FeaturedProjectsProps)
                 className="group cursor-pointer flex flex-col h-full select-none"
               >
                 {/* Project Image Container with Subtle Hover: scale 1 -> 1.025 (0.6s) */}
-                <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl bg-neutral-200 mb-6 shadow-[0_4px_24px_rgba(0,0,0,0.04)] transition-shadow duration-500 group-hover:shadow-[0_16px_40px_rgba(0,0,0,0.1)]">
+                <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl sm:rounded-2xl bg-neutral-200 mb-4 sm:mb-6 shadow-[0_4px_24px_rgba(0,0,0,0.04)] transition-shadow duration-500 group-hover:shadow-[0_16px_40px_rgba(0,0,0,0.1)]">
                   <motion.div
                     whileHover={{ scale: 1.025 }}
                     transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
@@ -54,7 +52,7 @@ export function FeaturedProjects({ onEnquireForProject }: FeaturedProjectsProps)
                       src={project.heroImage}
                       alt={project.name}
                       fill
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                       className="object-cover object-center"
                       referrerPolicy="no-referrer"
                     />
@@ -62,12 +60,12 @@ export function FeaturedProjects({ onEnquireForProject }: FeaturedProjectsProps)
                 </div>
 
                 {/* PROJECT NAME */}
-                <h3 className="text-2xl sm:text-3xl font-bold text-neutral-950 transition-transform duration-300 group-hover:-translate-y-0.5 mb-1.5 tracking-tight">
+                <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-neutral-950 transition-transform duration-300 group-hover:-translate-y-0.5 mb-1 sm:mb-1.5 tracking-tight">
                   {project.name}
                 </h3>
 
                 {/* Location & Status (Zero-Pill Typographic Hierarchy) */}
-                <div className="flex items-center space-x-2 text-xs font-inter text-neutral-400 font-light mb-5">
+                <div className="flex flex-wrap items-center gap-x-2 gap-y-0.5 text-xs font-inter text-neutral-400 font-light mb-4 sm:mb-5">
                   <span>{project.location}</span>
                   <span aria-hidden="true" className="text-neutral-300">·</span>
                   <span className="font-medium text-neutral-600">{project.status}</span>
@@ -105,19 +103,19 @@ export function FeaturedProjects({ onEnquireForProject }: FeaturedProjectsProps)
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.96, y: 20 }}
               transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-              className="relative w-full max-w-4xl max-h-[92vh] overflow-y-auto bg-white border border-neutral-200 rounded-3xl shadow-2xl z-10 text-neutral-900"
+              className="relative w-full max-w-4xl max-h-[92vh] overflow-y-auto bg-white border border-neutral-200 rounded-2xl sm:rounded-3xl shadow-2xl z-10 text-neutral-900"
             >
               {/* Close Button */}
               <button
                 onClick={() => setSelectedProject(null)}
                 aria-label="Close project modal"
-                className="absolute top-5 right-5 z-20 p-2.5 rounded-full bg-black/60 hover:bg-black/80 text-white backdrop-blur-md transition-all duration-300"
+                className="absolute top-3.5 right-3.5 sm:top-5 sm:right-5 z-20 p-2 sm:p-2.5 rounded-full bg-black/60 hover:bg-black/80 text-white backdrop-blur-md transition-all duration-300 focus-visible:outline-none"
               >
-                <X className="w-5 h-5" />
+                <X className="w-4 h-4 sm:w-5 sm:h-5" />
               </button>
 
               {/* Large Image Header */}
-              <div className="relative w-full h-72 sm:h-96 md:h-[460px] overflow-hidden rounded-t-3xl bg-neutral-100">
+              <div className="relative w-full h-56 sm:h-80 md:h-[420px] overflow-hidden rounded-t-2xl sm:rounded-t-3xl bg-neutral-100">
                 <Image
                   src={selectedProject.heroImage}
                   alt={selectedProject.name}
@@ -126,55 +124,55 @@ export function FeaturedProjects({ onEnquireForProject }: FeaturedProjectsProps)
                   className="object-cover object-center"
                   referrerPolicy="no-referrer"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent" />
 
-                <div className="absolute bottom-6 left-6 right-6 sm:left-10 sm:right-10 text-white">
-                  <div className="flex items-center space-x-2 text-xs font-inter uppercase tracking-[0.2em] text-neutral-300 mb-2">
+                <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-10 sm:right-10 text-white">
+                  <div className="flex flex-wrap items-center gap-x-2 gap-y-0.5 text-[10px] sm:text-xs font-inter uppercase tracking-[0.16em] sm:tracking-[0.2em] text-neutral-300 mb-1.5 sm:mb-2">
                     <span>{selectedProject.propertyType}</span>
                     <span>·</span>
                     <span>{selectedProject.location}</span>
                     <span>·</span>
                     <span>{selectedProject.status}</span>
                   </div>
-                  <h3 className="font-editorial text-3xl sm:text-5xl font-normal">
+                  <h3 className="font-editorial text-2xl sm:text-4xl md:text-5xl font-normal leading-tight">
                     {selectedProject.name}
                   </h3>
                 </div>
               </div>
 
               {/* Modal Body */}
-              <div className="p-6 sm:p-10 space-y-8">
+              <div className="p-4 sm:p-8 md:p-10 space-y-6 sm:space-y-8">
                 {/* Specifications Bar */}
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 p-5 rounded-2xl bg-neutral-50 border border-neutral-200/80">
-                  <div className="flex items-center space-x-3">
-                    <Maximize2 className="w-5 h-5 text-neutral-400" />
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 p-3.5 sm:p-5 rounded-xl sm:rounded-2xl bg-neutral-50 border border-neutral-200/80">
+                  <div className="flex items-center space-x-2.5 sm:space-x-3">
+                    <Maximize2 className="w-4 h-4 sm:w-5 sm:h-5 text-neutral-400 shrink-0" />
                     <div>
-                      <div className="text-[10px] uppercase tracking-wider font-inter text-neutral-400">Total Area</div>
-                      <div className="text-sm font-semibold text-neutral-900">{selectedProject.size}</div>
+                      <div className="text-[9px] sm:text-[10px] uppercase tracking-wider font-inter text-neutral-400">Total Area</div>
+                      <div className="text-xs sm:text-sm font-semibold text-neutral-900">{selectedProject.size}</div>
                     </div>
                   </div>
 
-                  <div className="flex items-center space-x-3">
-                    <Layers className="w-5 h-5 text-neutral-400" />
+                  <div className="flex items-center space-x-2.5 sm:space-x-3">
+                    <Layers className="w-4 h-4 sm:w-5 sm:h-5 text-neutral-400 shrink-0" />
                     <div>
-                      <div className="text-[10px] uppercase tracking-wider font-inter text-neutral-400">Levels</div>
-                      <div className="text-sm font-semibold text-neutral-900">{selectedProject.floors} Floors</div>
+                      <div className="text-[9px] sm:text-[10px] uppercase tracking-wider font-inter text-neutral-400">Levels</div>
+                      <div className="text-xs sm:text-sm font-semibold text-neutral-900">{selectedProject.floors} Floors</div>
                     </div>
                   </div>
 
-                  <div className="flex items-center space-x-3">
-                    <BedDouble className="w-5 h-5 text-neutral-400" />
+                  <div className="flex items-center space-x-2.5 sm:space-x-3">
+                    <BedDouble className="w-4 h-4 sm:w-5 sm:h-5 text-neutral-400 shrink-0" />
                     <div>
-                      <div className="text-[10px] uppercase tracking-wider font-inter text-neutral-400">Bedrooms</div>
-                      <div className="text-sm font-semibold text-neutral-900">{selectedProject.bedrooms} Suites</div>
+                      <div className="text-[9px] sm:text-[10px] uppercase tracking-wider font-inter text-neutral-400">Bedrooms</div>
+                      <div className="text-xs sm:text-sm font-semibold text-neutral-900">{selectedProject.bedrooms} Suites</div>
                     </div>
                   </div>
 
-                  <div className="flex items-center space-x-3">
-                    <Bath className="w-5 h-5 text-neutral-400" />
+                  <div className="flex items-center space-x-2.5 sm:space-x-3">
+                    <Bath className="w-4 h-4 sm:w-5 sm:h-5 text-neutral-400 shrink-0" />
                     <div>
-                      <div className="text-[10px] uppercase tracking-wider font-inter text-neutral-400">Bathrooms</div>
-                      <div className="text-sm font-semibold text-neutral-900">{selectedProject.bathrooms} Baths</div>
+                      <div className="text-[9px] sm:text-[10px] uppercase tracking-wider font-inter text-neutral-400">Bathrooms</div>
+                      <div className="text-xs sm:text-sm font-semibold text-neutral-900">{selectedProject.bathrooms} Baths</div>
                     </div>
                   </div>
                 </div>

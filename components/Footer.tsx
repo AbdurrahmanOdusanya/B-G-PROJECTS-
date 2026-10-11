@@ -14,22 +14,22 @@ export function Footer({ onEnquireClick }: FooterProps) {
   };
 
   return (
-    <footer id="contact" className="relative overflow-hidden bg-neutral-950 text-neutral-400 pt-20 pb-12 px-6 sm:px-12 md:px-16 lg:px-24 border-t border-neutral-900">
+    <footer id="contact" className="relative overflow-hidden bg-neutral-950 text-neutral-400 pt-16 sm:pt-20 pb-10 sm:pb-12 px-4 sm:px-8 md:px-16 lg:px-24 border-t border-neutral-900">
       <div className="relative z-10 max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 pb-16 border-b border-neutral-900">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-12 pb-12 sm:pb-16 border-b border-neutral-900">
           {/* Brand Col */}
-          <div className="md:col-span-5 space-y-6">
-            <div className="relative w-full max-w-sm sm:max-w-md md:max-w-lg -mt-3 sm:-mt-4 -mb-2 sm:-mb-3">
+          <div className="md:col-span-5 space-y-5 sm:space-y-6">
+            <div className="relative w-full max-w-xs sm:max-w-sm md:max-w-lg -mt-2 sm:-mt-4 -mb-2 sm:-mb-3">
               <Image
                 src="/assets/Luxury%20B&G%20Projects%20Wordmark-Photoroom.png"
                 alt="B & G Projects Logo"
                 width={800}
                 height={400}
-                className="h-28 sm:h-32 md:h-36 lg:h-40 w-auto max-w-full object-contain object-left brightness-0 invert opacity-95 transition-opacity hover:opacity-100"
+                className="h-20 sm:h-28 md:h-36 lg:h-40 w-auto max-w-full object-contain object-left brightness-0 invert opacity-95 transition-opacity hover:opacity-100"
                 referrerPolicy="no-referrer"
               />
             </div>
-            <p className="text-sm font-light text-neutral-400 max-w-sm leading-relaxed font-inter">
+            <p className="text-xs sm:text-sm font-light text-neutral-400 max-w-sm leading-relaxed font-inter">
               Design-led residential developer crafting private sanctuaries, architectural compounds, and bespoke urban estates.
             </p>
           </div>

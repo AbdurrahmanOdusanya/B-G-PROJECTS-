@@ -10,11 +10,11 @@ export function AboutPreview() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
-    <section id="about" className="relative py-28 sm:py-36 md:py-44 px-6 sm:px-12 md:px-16 lg:px-24 bg-white text-neutral-900 border-t border-neutral-100">
+    <section id="about" className="relative py-20 sm:py-28 md:py-36 lg:py-44 px-4 sm:px-8 md:px-12 lg:px-24 bg-white text-neutral-900 border-t border-neutral-100">
       <div className="max-w-7xl mx-auto">
         {/* 01 — Section Label */}
         <RevealOnScroll delay={0} yOffset={18}>
-          <div className="flex items-center space-x-3 mb-10 sm:mb-14">
+          <div className="flex items-center space-x-3 mb-8 sm:mb-12 md:mb-14">
             <span className="text-[11px] sm:text-[12px] tracking-[0.18em] font-medium text-neutral-400">
               About The Company
             </span>
@@ -102,22 +102,22 @@ export function AboutPreview() {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 20, scale: 0.98 }}
               transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-              className="relative w-full max-w-3xl max-h-[90vh] overflow-y-auto bg-white border border-neutral-200 rounded-3xl p-7 sm:p-10 shadow-2xl z-10 text-neutral-900"
+              className="relative w-full max-w-3xl max-h-[90vh] overflow-y-auto bg-white border border-neutral-200 rounded-2xl sm:rounded-3xl p-5 sm:p-8 md:p-10 shadow-2xl z-10 text-neutral-900"
             >
               <button
                 onClick={() => setIsModalOpen(false)}
                 aria-label="Close modal"
-                className="absolute top-6 right-6 p-2 rounded-full text-neutral-400 hover:text-black hover:bg-neutral-100 transition-colors"
+                className="absolute top-4 right-4 sm:top-6 sm:right-6 p-2 rounded-full text-neutral-400 hover:text-black hover:bg-neutral-100 transition-colors focus-visible:outline-none"
               >
                 <X className="w-5 h-5" />
               </button>
 
-              <div className="space-y-8">
+              <div className="space-y-6 sm:space-y-8">
                 <div>
-                  <span className="text-[11px] tracking-[0.18em] text-neutral-400 font-medium">
+                  <span className="text-[10px] sm:text-[11px] tracking-[0.18em] text-neutral-400 font-medium">
                     Our Philosophy
                   </span>
-                  <h3 className="text-3xl sm:text-4xl text-neutral-950 mt-2 font-bold tracking-tight">
+                  <h3 className="text-2xl sm:text-3xl md:text-4xl text-neutral-950 mt-1.5 sm:mt-2 font-bold tracking-tight">
                     The Art Of Architectural Permanence
                   </h3>
                 </div>
