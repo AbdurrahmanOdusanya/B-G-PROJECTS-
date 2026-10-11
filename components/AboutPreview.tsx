@@ -52,7 +52,7 @@ export function AboutPreview() {
           <div className="lg:col-span-5 flex flex-col justify-center space-y-6 sm:space-y-8 pr-0 lg:pr-4">
             {/* 02 — Heading */}
             <RevealOnScroll delay={0.05} yOffset={20}>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-neutral-950 leading-[1.14] tracking-tight">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-accent italic font-normal text-neutral-950 leading-[1.14] tracking-tight">
                 We Create Residences That Endure Beyond Generations.
               </h2>
             </RevealOnScroll>

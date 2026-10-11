@@ -14,10 +14,10 @@ export function FinalCTA({ onEnquireClick }: FinalCTAProps) {
       <div className="max-w-4xl mx-auto text-center relative z-10">
         {/* Large, Confident Headline */}
         <RevealOnScroll delay={0} yOffset={24}>
-          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-neutral-950 tracking-tight leading-[1.08] mb-6 select-none">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-accent italic font-normal text-neutral-950 tracking-tight leading-[1.08] mb-6 select-none">
             Ready To Find
             <br />
-            <span className="italic font-normal text-neutral-800">Your Next Home?</span>
+            <span className="font-accent italic font-normal text-neutral-800">Your Next Home?</span>
           </h2>
         </RevealOnScroll>
 

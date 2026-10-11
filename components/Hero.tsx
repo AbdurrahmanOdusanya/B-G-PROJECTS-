@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef } from 'react';
 import { motion, useReducedMotion } from 'motion/react';
-import { ArrowDown, ArrowRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 interface HeroProps {
   onHeroLuminanceChange: (isLight: boolean) => void;
@@ -59,15 +59,22 @@ export function Hero({ onHeroLuminanceChange, onEnquireClick }: HeroProps) {
   return (
     <section
       id="hero"
-      className="relative w-full h-[100dvh] min-h-[700px] overflow-hidden flex flex-col justify-end pb-14 sm:pb-20 md:pb-24 px-6 sm:px-12 md:px-16 lg:px-24"
+      className="relative w-full min-h-[100dvh] overflow-hidden flex flex-col justify-center items-center pt-24 sm:pt-28 pb-16 sm:pb-20 px-6 sm:px-12 md:px-16 lg:px-24"
     >
-      {/* Background Animated Video Asset with subtle cinematic scale */}
-      <motion.div
-        initial={shouldReduceMotion ? { scale: 1 } : { scale: 1.08 }}
-        animate={{ scale: 1 }}
-        transition={{ duration: 2.0, ease: [0.16, 1, 0.3, 1] }}
-        className="absolute inset-0 w-full h-full pointer-events-none select-none z-0"
-      >
+      {/* Background Animated Video Asset - Zoomed out so the full image can be seen clearly */}
+      <div className="absolute inset-0 w-full h-full pointer-events-none select-none z-0 overflow-hidden bg-neutral-950 flex items-center justify-center">
+        {/* Ambient blurred backdrop so any aspect ratio differences blend seamlessly without harsh black bars */}
+        <video
+          src="/assets/hero-animated.mp4"
+          autoPlay
+          loop
+          muted
+          playsInline
+          aria-hidden="true"
+          className="absolute inset-0 w-full h-full object-cover blur-3xl opacity-30 scale-105 pointer-events-none"
+        />
+
+        {/* Primary animated video: object-contain zooms out to present the complete architectural composition */}
         <video
           ref={videoRef}
           src="/assets/hero-animated.mp4"
@@ -75,51 +82,62 @@ export function Hero({ onHeroLuminanceChange, onEnquireClick }: HeroProps) {
           loop
           muted
           playsInline
-          className="w-full h-full object-cover object-center"
+          className="relative w-full h-full object-contain object-center pointer-events-none"
         />
 
-        {/* Architectural Vignette & Contrast Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/60 pointer-events-none" />
-        <div className="absolute inset-0 bg-black/20 pointer-events-none" />
-      </motion.div>
+        {/* Reduced opacity architectural overlay for vibrant clarity while keeping typography legible */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/15 to-black/25 pointer-events-none" />
+      </div>
 
       {/* Hidden canvas for real-time luminance */}
       <canvas ref={canvasRef} className="hidden" aria-hidden="true" />
 
       {/* Hero Content Container */}
       <div className="relative z-10 max-w-6xl mx-auto w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           {/* Main Headline (Playfair Display) */}
           <div className="lg:col-span-8">
-            <motion.div
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-              className="flex items-center space-x-3 mb-5"
-            >
-              <span className="w-8 h-[1px] bg-white/70" />
-              <span className="text-[11px] tracking-[0.18em] font-medium text-neutral-300">
-                Architectural Residential Showcase
-              </span>
-            </motion.div>
 
-            <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-[5.25rem] text-white leading-[1.06] tracking-tight select-none">
-              <motion.span
-                initial={{ opacity: 0, y: 30, filter: 'blur(10px)' }}
-                animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-                transition={{ duration: 1.1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-                className="block font-bold tracking-tight"
-              >
-                Crafting Spaces
-              </motion.span>
-              <motion.span
-                initial={{ opacity: 0, y: 30, filter: 'blur(10px)' }}
-                animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-                transition={{ duration: 1.1, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
-                className="block italic font-normal text-neutral-200"
-              >
-                Worth Coming Home To.
-              </motion.span>
+            <h1 className="text-3xl min-[400px]:text-4xl sm:text-5xl md:text-5xl lg:text-[4.25rem] xl:text-[4.75rem] text-white leading-[1.1] tracking-tight select-none drop-shadow-[0_4px_16px_rgba(0,0,0,0.6)]">
+              {/* Desktop layout (lg and up): Line 1 = "Crafting Spaces", Line 2 = "Worth Coming Home To." */}
+              <div className="hidden lg:block">
+                <motion.span
+                  initial={{ opacity: 0, y: 30, filter: 'blur(10px)' }}
+                  animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                  transition={{ duration: 1.1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+                  className="block font-accent italic font-normal tracking-tight whitespace-nowrap"
+                >
+                  Crafting Spaces
+                </motion.span>
+                <motion.span
+                  initial={{ opacity: 0, y: 30, filter: 'blur(10px)' }}
+                  animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                  transition={{ duration: 1.1, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                  className="block font-accent italic font-normal text-neutral-100 tracking-tight whitespace-nowrap"
+                >
+                  Worth Coming Home To.
+                </motion.span>
+              </div>
+
+              {/* Tablet & Mobile layout (< lg): Line 1 = "Crafting Spaces Worth", Line 2 = "Coming Home To." */}
+              <div className="block lg:hidden">
+                <motion.span
+                  initial={{ opacity: 0, y: 30, filter: 'blur(10px)' }}
+                  animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                  transition={{ duration: 1.1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+                  className="block font-accent italic font-normal tracking-tight"
+                >
+                  Crafting Spaces Worth
+                </motion.span>
+                <motion.span
+                  initial={{ opacity: 0, y: 30, filter: 'blur(10px)' }}
+                  animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                  transition={{ duration: 1.1, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                  className="block font-accent italic font-normal text-neutral-100 tracking-tight"
+                >
+                  Coming Home To.
+                </motion.span>
+              </div>
             </h1>
 
             {/* CTAs */}
@@ -147,12 +165,12 @@ export function Hero({ onHeroLuminanceChange, onEnquireClick }: HeroProps) {
           </div>
 
           {/* Right Supporting Statement */}
-          <div className="lg:col-span-4 lg:pb-3">
+          <div className="lg:col-span-4">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, delay: 0.65, ease: [0.16, 1, 0.3, 1] }}
-              className="text-neutral-300 text-sm sm:text-base font-medium leading-relaxed border-l border-white/20 pl-5"
+              className="text-neutral-200 text-sm sm:text-base font-medium leading-relaxed border-l border-white/30 pl-5 drop-shadow-[0_2px_10px_rgba(0,0,0,0.6)]"
             >
               Thoughtfully designed residences created for exceptional living.
             </motion.div>
@@ -160,16 +178,7 @@ export function Hero({ onHeroLuminanceChange, onEnquireClick }: HeroProps) {
         </div>
       </div>
 
-      {/* Subtle Scroll Indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.2, duration: 0.8 }}
-        className="absolute bottom-6 right-6 sm:right-12 hidden md:flex items-center space-x-2 text-neutral-400 text-[11px] tracking-[0.15em] font-medium pointer-events-none"
-      >
-        <span>Scroll Down</span>
-        <ArrowDown className="w-3.5 h-3.5 animate-bounce" />
-      </motion.div>
+
     </section>
   );
 }

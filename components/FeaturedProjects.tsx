@@ -20,14 +20,10 @@ export function FeaturedProjects({ onEnquireForProject }: FeaturedProjectsProps)
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 sm:mb-20 gap-6">
           <div>
-            <RevealOnScroll delay={0} yOffset={25}>
-              <span className="text-[11px] font-inter tracking-[0.22em] font-medium text-neutral-400 block mb-3">
-                Selected Portfolio
-              </span>
-            </RevealOnScroll>
+
 
             <RevealOnScroll delay={0.08} yOffset={30}>
-              <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold text-neutral-950 leading-tight tracking-tight">
+              <h2 className="text-3xl sm:text-5xl md:text-6xl font-accent italic font-normal text-neutral-950 leading-tight tracking-tight">
                 Featured Projects
               </h2>
             </RevealOnScroll>

@@ -32,14 +32,6 @@ export function Footer({ onEnquireClick }: FooterProps) {
             <p className="text-sm font-light text-neutral-400 max-w-sm leading-relaxed font-inter">
               Design-led residential developer crafting private sanctuaries, architectural compounds, and bespoke urban estates.
             </p>
-            <div className="pt-2">
-              <button
-                onClick={onEnquireClick}
-                className="text-xs font-inter tracking-[0.16em] text-white underline underline-offset-4 hover:text-neutral-300 transition-colors"
-              >
-                Request Private Dossier →
-              </button>
-            </div>
           </div>
 
           {/* Quick Navigation */}

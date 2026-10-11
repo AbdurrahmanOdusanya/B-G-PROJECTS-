@@ -190,18 +190,7 @@ export function Navbar({ themeMode, onEnquireClick }: NavbarProps) {
             }`}
           >
             <div className="flex flex-col space-y-5 pt-1 pb-2">
-              <div className="flex items-center justify-between border-b border-black/5 pb-3">
-                <span className={`text-[10px] tracking-[0.15em] font-medium ${
-                  isLightMode ? 'text-neutral-500' : 'text-neutral-400'
-                }`}>
-                  Navigation Portfolio
-                </span>
-                <span className={`text-[10px] ${
-                  isLightMode ? 'text-neutral-400' : 'text-neutral-500'
-                }`}>
-                  Lagos Atelier
-                </span>
-              </div>
+
 
               <div className="flex flex-col space-y-1">
                 {navLinks.map((link, idx) => (
