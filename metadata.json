@@ -1,0 +1,6 @@
+{
+  "name": "Luxury Home Developer",
+  "description": "Premium showcase platform for luxury residential property developments and qualified enquiries.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

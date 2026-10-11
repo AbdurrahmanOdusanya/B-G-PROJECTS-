@@ -1,0 +1,107 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,400;1,500;1,600;1,700&family=Plus+Jakarta+Sans:ital,wght@0,500;0,600;0,700;1,500;1,600;1,700&display=swap');
+
+:root {
+  --font-primary: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-accent: 'Playfair Display', Georgia, serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: clip;
+}
+
+body {
+  font-family: var(--font-primary);
+  font-weight: 500;
+  background-color: #fbfbfa;
+  color: #111111;
+  overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Primary text & UI: Plus Jakarta Sans */
+.font-primary,
+.font-inter,
+.font-editorial {
+  font-family: var(--font-primary);
+}
+
+/* Accent text: Playfair Display strictly for italics */
+.font-accent,
+i,
+em,
+.italic {
+  font-family: var(--font-accent);
+  font-style: italic;
+}
+
+/* Glassmorphism navbar styling requested by user (Hero / Dark) */
+.navbar-glass-hero {
+  background: rgba(255, 255, 255, 0.10);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.22);
+}
+
+/* LIGHT MODE ONLY */
+.light .glass-navbar {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.66) 0%,
+      rgba(255, 255, 255, 0.38) 100%
+    ),
+    rgba(248, 249, 252, 0.42);
+
+  -webkit-backdrop-filter: blur(28px) saturate(145%);
+  backdrop-filter: blur(28px) saturate(145%);
+
+  border: 1px solid rgba(30, 35, 45, 0.12);
+
+  box-shadow:
+    0 8px 30px rgba(25, 30, 40, 0.08),
+    0 2px 6px rgba(25, 30, 40, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.90),
+    inset 0 -1px 0 rgba(30, 35, 45, 0.05);
+}
+
+.light .glass-navbar .nav-link,
+.light .glass-navbar .nav-logo {
+  color: #202124;
+}
+
+/* NAVBAR OVER DARK FOOTER (when navbar overlaps footer) */
+.footer-dark .glass-navbar,
+.glass-navbar-footer {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(32, 35, 42, 0.72) 0%,
+      rgba(16, 18, 22, 0.68) 100%
+    );
+
+  -webkit-backdrop-filter: blur(28px) saturate(140%);
+  backdrop-filter: blur(28px) saturate(140%);
+
+  border: 1px solid rgba(255, 255, 255, 0.16);
+
+  box-shadow:
+    0 10px 32px rgba(0, 0, 0, 0.35),
+    0 2px 8px rgba(0, 0, 0, 0.20),
+    inset 0 1px 0 rgba(255, 255, 255, 0.22),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.30);
+}
+
+.footer-dark .glass-navbar .nav-link,
+.footer-dark .glass-navbar .nav-logo {
+  color: #f3f4f6;
+}
+
+/* Ensure glassmorphism blurs background only, never content */
+.glass-navbar {
+  isolation: isolate;
+}
+
