@@ -286,7 +286,7 @@ function EnquiryDialogContent({
               </span>
               <span className="flex items-center space-x-1.5">
                 <Mail className="w-3.5 h-3.5 text-neutral-500" />
-                <span>concierge@luxurydev.com</span>
+                <span>concierge@bgprojects.com</span>
               </span>
               <a
                 href="https://wa.me/2348000000000"

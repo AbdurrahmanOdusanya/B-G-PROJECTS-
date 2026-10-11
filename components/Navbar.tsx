@@ -95,7 +95,7 @@ export function Navbar({ themeMode, onEnquireClick }: NavbarProps) {
             >
               <Image
                 src="/assets/logo-light.png"
-                alt="Luxury Developer Logo"
+                alt="B & G Projects Logo"
                 width={200}
                 height={70}
                 priority
@@ -112,7 +112,7 @@ export function Navbar({ themeMode, onEnquireClick }: NavbarProps) {
             >
               <Image
                 src="/assets/logo-dark.png"
-                alt="Luxury Developer Logo"
+                alt="B & G Projects Logo"
                 width={200}
                 height={70}
                 priority

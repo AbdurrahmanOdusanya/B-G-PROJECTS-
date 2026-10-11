@@ -28,14 +28,6 @@ export function FeaturedProjects({ onEnquireForProject }: FeaturedProjectsProps)
               </h2>
             </RevealOnScroll>
           </div>
-
-          <div className="max-w-md">
-            <RevealOnScroll delay={0.16} yOffset={25}>
-              <p className="text-neutral-600 text-sm sm:text-base leading-relaxed font-medium">
-                A curated selection of distinguished private residences, waterfront sanctuaries, and urban estates.
-              </p>
-            </RevealOnScroll>
-          </div>
         </div>
 
         {/* Project Cards Grid with Large Image-Led Cards */}
