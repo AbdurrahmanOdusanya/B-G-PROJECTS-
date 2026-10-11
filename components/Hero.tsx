@@ -10,19 +10,57 @@ interface HeroProps {
 }
 
 export function Hero({ onHeroLuminanceChange, onEnquireClick }: HeroProps) {
-  const videoRef = useRef<HTMLVideoElement | null>(null);
+  const desktopVideoRef = useRef<HTMLVideoElement | null>(null);
+  const mobileVideoRef = useRef<HTMLVideoElement | null>(null);
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const shouldReduceMotion = useReducedMotion();
 
+  // Ensure both videos start playing reliably across devices
+  useEffect(() => {
+    const playSafe = (v: HTMLVideoElement | null) => {
+      if (!v) return;
+      v.muted = true;
+      v.defaultMuted = true;
+      v.playsInline = true;
+      const playPromise = v.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(() => {});
+      }
+    };
+
+    playSafe(desktopVideoRef.current);
+    playSafe(mobileVideoRef.current);
+
+    // Fallback: If autoplay was temporarily deferred by browser policy, resume on first interaction
+    const handleFirstInteraction = () => {
+      playSafe(desktopVideoRef.current);
+      playSafe(mobileVideoRef.current);
+      window.removeEventListener('touchstart', handleFirstInteraction);
+      window.removeEventListener('click', handleFirstInteraction);
+      window.removeEventListener('scroll', handleFirstInteraction);
+    };
+
+    window.addEventListener('touchstart', handleFirstInteraction, { passive: true, once: true });
+    window.addEventListener('click', handleFirstInteraction, { passive: true, once: true });
+    window.addEventListener('scroll', handleFirstInteraction, { passive: true, once: true });
+
+    return () => {
+      window.removeEventListener('touchstart', handleFirstInteraction);
+      window.removeEventListener('click', handleFirstInteraction);
+      window.removeEventListener('scroll', handleFirstInteraction);
+    };
+  }, []);
+
   // Real-time canvas sampling of top video area to dynamically adapt navbar
   useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-
     let intervalId: NodeJS.Timeout;
 
     const sampleLuminance = () => {
       try {
+        const isDesktop = typeof window !== 'undefined' && window.innerWidth >= 768;
+        const video = isDesktop
+          ? (desktopVideoRef.current || mobileVideoRef.current)
+          : (mobileVideoRef.current || desktopVideoRef.current);
         if (!video || video.readyState < 2) return;
         const canvas = canvasRef.current || document.createElement('canvas');
         canvas.width = 64;
@@ -61,31 +99,39 @@ export function Hero({ onHeroLuminanceChange, onEnquireClick }: HeroProps) {
       id="hero"
       className="relative w-full min-h-[100dvh] overflow-hidden flex flex-col justify-center items-center pt-24 sm:pt-28 pb-16 sm:pb-20 px-6 sm:px-12 md:px-16 lg:px-24"
     >
-      {/* Background Animated Video Asset - Zoomed out so the full image can be seen clearly */}
-      <div className="absolute inset-0 w-full h-full pointer-events-none select-none z-0 overflow-hidden bg-neutral-950 flex items-center justify-center">
-        {/* Ambient blurred backdrop so any aspect ratio differences blend seamlessly without harsh black bars */}
+      {/* Background Animated Video Asset - Covering the entire hero section */}
+      <div className="absolute inset-0 w-full h-full pointer-events-none select-none z-0 overflow-hidden bg-neutral-950">
+        {/* Desktop and Tablet mode video (1280x720) */}
         <video
-          src="/assets/hero-animated.mp4"
+          ref={desktopVideoRef}
+          src="/assets/animated%20hero%20desktop%20-%20tablet.mp4"
           autoPlay
           loop
           muted
           playsInline
+          preload="auto"
           aria-hidden="true"
-          className="absolute inset-0 w-full h-full object-cover blur-3xl opacity-30 scale-105 pointer-events-none"
-        />
+          className="hidden md:block absolute inset-0 w-full h-full object-cover object-center pointer-events-none"
+        >
+          <source src="/assets/animated%20hero%20desktop%20-%20tablet.mp4" type="video/mp4" />
+        </video>
 
-        {/* Primary animated video: object-contain zooms out to present the complete architectural composition */}
+        {/* Mobile mode video (720x1280) */}
         <video
-          ref={videoRef}
-          src="/assets/hero-animated.mp4"
+          ref={mobileVideoRef}
+          src="/assets/animated%20hero%20mobile.mp4"
           autoPlay
           loop
           muted
           playsInline
-          className="relative w-full h-full object-contain object-center pointer-events-none"
-        />
+          preload="auto"
+          aria-hidden="true"
+          className="block md:hidden absolute inset-0 w-full h-full object-cover object-center pointer-events-none"
+        >
+          <source src="/assets/animated%20hero%20mobile.mp4" type="video/mp4" />
+        </video>
 
-        {/* Reduced opacity architectural overlay for vibrant clarity while keeping typography legible */}
+        {/* Architectural overlay for vibrant clarity while keeping typography legible */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/15 to-black/25 pointer-events-none" />
       </div>
 
@@ -94,9 +140,9 @@ export function Hero({ onHeroLuminanceChange, onEnquireClick }: HeroProps) {
 
       {/* Hero Content Container */}
       <div className="relative z-10 max-w-6xl mx-auto w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+        <div className="max-w-4xl">
           {/* Main Headline (Playfair Display) */}
-          <div className="lg:col-span-8">
+          <div>
 
             <h1 className="text-3xl min-[400px]:text-4xl sm:text-5xl md:text-5xl lg:text-[4.25rem] xl:text-[4.75rem] text-white leading-[1.1] tracking-tight select-none drop-shadow-[0_4px_16px_rgba(0,0,0,0.6)]">
               {/* Desktop layout (lg and up): Line 1 = "Crafting Spaces", Line 2 = "Worth Coming Home To." */}
@@ -161,18 +207,6 @@ export function Hero({ onHeroLuminanceChange, onEnquireClick }: HeroProps) {
               >
                 Enquire
               </button>
-            </motion.div>
-          </div>
-
-          {/* Right Supporting Statement */}
-          <div className="lg:col-span-4">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.9, delay: 0.65, ease: [0.16, 1, 0.3, 1] }}
-              className="text-neutral-200 text-sm sm:text-base font-medium leading-relaxed border-l border-white/30 pl-5 drop-shadow-[0_2px_10px_rgba(0,0,0,0.6)]"
-            >
-              Thoughtfully designed residences created for exceptional living.
             </motion.div>
           </div>
         </div>

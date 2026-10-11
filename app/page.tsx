@@ -27,16 +27,15 @@ export default function HomePage() {
         setIsPastHero(heroBottom <= 80);
       }
     };
-
     window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   // When past the hero (over clean white/off-white sections), navbar switches to 'light'
-  // (displaying dark logo logo-dark.png, dark navigation links, and dark CTA)
-  // When over hero, it follows video frame luminance
-  const themeMode: 'dark' | 'light' = isPastHero ? 'light' : (heroIsBright ? 'light' : 'dark');
+  // (displaying dark logo logo-dark.png, dark navigation links, and dark CTA).
+  // When over hero, it stays dark mode so the frosted glassmorphism over the video remains intact.
+  const themeMode: 'dark' | 'light' = isPastHero ? 'light' : 'dark';
 
   const handleOpenEnquiry = (projectName?: string) => {
     setSelectedProjectForEnquiry(projectName);

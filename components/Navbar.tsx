@@ -18,7 +18,8 @@ export function Navbar({ themeMode, onEnquireClick }: NavbarProps) {
 
   useEffect(() => {
     const handleScrollAndOverlap = () => {
-      setIsScrolled(window.scrollY > 30);
+      // Activate scrolled glassmorphism as soon as user begins scrolling (scrollY > 20)
+      setIsScrolled(window.scrollY > 20);
 
       const header = headerRef.current;
       if (!header) return;
@@ -31,7 +32,6 @@ export function Navbar({ themeMode, onEnquireClick }: NavbarProps) {
       if (footer) {
         const footerRect = footer.getBoundingClientRect();
         // True ONLY when footer physically overlaps the fixed navbar bounds
-        // (will not trigger merely because footer entered the viewport below)
         const overlaps = footerRect.top <= navbarBottom && footerRect.bottom >= navbarTop;
         setIsOverDarkFooter(overlaps);
       } else {
@@ -78,7 +78,7 @@ export function Navbar({ themeMode, onEnquireClick }: NavbarProps) {
               ? 'glass-navbar-footer'
               : isLightMode
               ? ''
-              : 'navbar-glass-hero'
+              : `navbar-glass-hero ${isScrolled ? 'scrolled-hero' : ''}`
           } ${isScrolled ? 'shadow-lg' : ''}`}
         >
           {/* Responsive Logo Area (Balanced sizing across Mobile, Tablet, and Desktop) */}
@@ -190,8 +190,6 @@ export function Navbar({ themeMode, onEnquireClick }: NavbarProps) {
             }`}
           >
             <div className="flex flex-col space-y-5 pt-1 pb-2">
-
-
               <div className="flex flex-col space-y-1">
                 {navLinks.map((link, idx) => (
                   <motion.a
