@@ -214,32 +214,10 @@ function EnquiryDialogContent({
                 </div>
               </div>
 
-              {/* Property of Interest */}
-              <div>
-                <label className="block text-[11px] font-mono tracking-[0.15em] text-neutral-300 uppercase mb-1.5">
-                  Property / Residence of Interest
-                </label>
-                <select
-                  value={formData.propertyInterest}
-                  onChange={(e) => setFormData({ ...formData, propertyInterest: e.target.value })}
-                  className="w-full px-4 py-3 rounded-xl bg-neutral-900 border border-white/15 text-sm text-white focus:outline-none focus:border-white transition-colors"
-                >
-                  <option value="General Portfolio Inquiry">General Portfolio Inquiry</option>
-                  {FEATURED_PROJECTS.map((p) => (
-                    <option key={p.id} value={p.name}>
-                      {p.name} ({p.location})
-                    </option>
-                  ))}
-                  <option value="Bespoke Commission / Land Development">
-                    Bespoke Commission / Land Development
-                  </option>
-                </select>
-              </div>
-
               {/* Message */}
               <div>
                 <label className="block text-[11px] font-mono tracking-[0.15em] text-neutral-300 uppercase mb-1.5">
-                  Confidential Message / Requirements
+                  Confidential Message
                 </label>
                 <textarea
                   rows={3}

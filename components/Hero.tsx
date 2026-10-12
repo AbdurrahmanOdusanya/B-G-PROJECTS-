@@ -146,7 +146,7 @@ export function Hero({ onHeroLuminanceChange, onEnquireClick }: HeroProps) {
 
             <h1 className="text-[1.75rem] min-[360px]:text-[1.95rem] min-[400px]:text-4xl sm:text-5xl md:text-5xl lg:text-[4.25rem] xl:text-[4.75rem] text-white leading-[1.1] tracking-tight select-none drop-shadow-[0_4px_16px_rgba(0,0,0,0.6)]">
               {/* Desktop layout (lg and up): Line 1 = "Crafting Spaces", Line 2 = "Worth Coming Home To" */}
-              <div className="hidden lg:block">
+              <span className="hidden lg:block">
                 <motion.span
                   initial={{ opacity: 0, y: 30, filter: 'blur(10px)' }}
                   animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
@@ -163,10 +163,10 @@ export function Hero({ onHeroLuminanceChange, onEnquireClick }: HeroProps) {
                 >
                   Worth Coming Home To
                 </motion.span>
-              </div>
+              </span>
 
               {/* Tablet & Mobile layout (< lg): Line 1 = "Crafting Spaces Worth", Line 2 = "Coming Home To" */}
-              <div className="block lg:hidden">
+              <span className="block lg:hidden">
                 <motion.span
                   initial={{ opacity: 0, y: 30, filter: 'blur(10px)' }}
                   animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
@@ -183,7 +183,7 @@ export function Hero({ onHeroLuminanceChange, onEnquireClick }: HeroProps) {
                 >
                   Coming Home To
                 </motion.span>
-              </div>
+              </span>
             </h1>
 
             {/* CTAs */}

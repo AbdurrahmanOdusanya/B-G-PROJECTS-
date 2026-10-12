@@ -83,8 +83,8 @@ export function Footer({ onEnquireClick }: FooterProps) {
 
         {/* Bottom Bar */}
         <div className="pt-8 pb-24 sm:pb-28 md:pb-32 lg:pb-36 flex flex-col sm:flex-row items-center justify-between text-[11px] font-inter text-neutral-500 gap-4">
-          <div>
-            © {new Date().getFullYear()} B & G Projects. All architectural rights reserved.
+          <div suppressHydrationWarning>
+            © 2026 B & G Projects. All architectural rights reserved.
           </div>
 
           <div className="flex items-center space-x-6">
