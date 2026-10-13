@@ -60,9 +60,7 @@ export function AboutPreview() {
             {/* 03 — Description */}
             <RevealOnScroll delay={0.1} yOffset={18}>
               <p className="text-neutral-600 text-sm sm:text-base leading-relaxed font-medium">
-                Our vision bridges architectural balance, monolithic permanence, and tactile materiality.
-                Every home is conceived as an inhabited sanctuary where natural illumination, thermal calm,
-                and acoustic stillness converge seamlessly.
+                We create exceptional homes that blend timeless architecture, refined craftsmanship, and modern comfort. Every residence is thoughtfully designed to inspire everyday living, bringing together elegant spaces, quality materials, and lasting value in perfect harmony.
               </p>
             </RevealOnScroll>
 
