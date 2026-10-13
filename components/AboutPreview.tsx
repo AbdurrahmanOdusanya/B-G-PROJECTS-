@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'motion/react';
-import { ArrowRight, X, Compass, Layers, ShieldCheck, Sparkles } from 'lucide-react';
+import { X, Compass, Layers, ShieldCheck, Sparkles } from 'lucide-react';
 import { RevealOnScroll } from './RevealOnScroll';
 
 export function AboutPreview() {
@@ -64,21 +64,6 @@ export function AboutPreview() {
               </p>
             </RevealOnScroll>
 
-            {/* 04 — CTA */}
-            <RevealOnScroll delay={0.15} yOffset={16}>
-              <div className="pt-2">
-                <button
-                  type="button"
-                  onClick={() => setIsModalOpen(true)}
-                  className="inline-flex items-center text-xs tracking-[0.15em] font-semibold text-neutral-900 py-2 group transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-neutral-400 rounded-sm"
-                >
-                  <span className="border-b border-neutral-300 group-hover:border-neutral-900 transition-colors pb-1">
-                    Discover More
-                  </span>
-                  <ArrowRight className="w-3.5 h-3.5 ml-2.5 transition-transform duration-300 group-hover:translate-x-1.5" />
-                </button>
-              </div>
-            </RevealOnScroll>
           </div>
         </div>
       </div>
