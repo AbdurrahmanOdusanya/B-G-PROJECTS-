@@ -36,6 +36,9 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
           href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
           rel="stylesheet"
         />
+        {/* Preload hero first-frame poster for instant visual paint */}
+        <link rel="preload" href="/assets/hero-poster-desktop.webp" as="image" type="image/webp" media="(min-width: 768px)" />
+        <link rel="preload" href="/assets/hero-poster-mobile.webp" as="image" type="image/webp" media="(max-width: 767px)" />
       </head>
       <body suppressHydrationWarning>{children}</body>
     </html>

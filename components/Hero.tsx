@@ -104,35 +104,34 @@ export function Hero({ onHeroLuminanceChange, onEnquireClick }: HeroProps) {
         {/* Desktop and Tablet mode video (1280x720) */}
         <video
           ref={desktopVideoRef}
-          src="/assets/animated%20hero%20desktop%20-%20tablet.mp4"
           autoPlay
           loop
           muted
           playsInline
           preload="auto"
+          poster="/assets/hero-poster-desktop.webp"
           aria-hidden="true"
           className="hidden md:block absolute inset-0 w-full h-full object-cover object-center pointer-events-none"
         >
-          <source src="/assets/animated%20hero%20desktop%20-%20tablet.mp4" type="video/mp4" />
+          <source src="/assets/animated-hero-desktop.webm" type="video/webm" />
+          <source src="/assets/animated-hero-desktop.mp4" type="video/mp4" />
         </video>
 
         {/* Mobile mode video (720x1280) */}
         <video
           ref={mobileVideoRef}
-          src="/assets/animated%20hero%20mobile.mp4"
           autoPlay
           loop
           muted
           playsInline
           preload="auto"
+          poster="/assets/hero-poster-mobile.webp"
           aria-hidden="true"
           className="block md:hidden absolute inset-0 w-full h-full object-cover object-center pointer-events-none"
         >
-          <source src="/assets/animated%20hero%20mobile.mp4" type="video/mp4" />
+          <source src="/assets/animated-hero-mobile.webm" type="video/webm" />
+          <source src="/assets/animated-hero-mobile.mp4" type="video/mp4" />
         </video>
-
-        {/* Architectural overlay for vibrant clarity while keeping typography legible */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-black/25 md:from-black/60 md:via-black/15 md:to-black/25 pointer-events-none" />
       </div>
 
       {/* Hidden canvas for real-time luminance */}
