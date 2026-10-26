@@ -39,7 +39,10 @@ export const FEATURED_PROJECTS: Project[] = [
     heroImage: '/assets/GraceVille/main.webp',
     secondaryImage: '/assets/GraceVille/1.webp',
     gallery: [
+      '/assets/GraceVille/main.webp',
       '/assets/GraceVille/1.webp',
+      '/assets/GraceVille/2.1.webp',
+      '/assets/GraceVille/2.2.webp',
       '/assets/GraceVille/2.webp',
       '/assets/GraceVille/3.webp',
       '/assets/GraceVille/4.webp',
@@ -72,6 +75,8 @@ export const FEATURED_PROJECTS: Project[] = [
     gallery: [
       '/assets/GraceVille%20Detached/main.webp',
       '/assets/GraceVille%20Detached/1.webp',
+      '/assets/GraceVille%20Detached/2.1.webp',
+      '/assets/GraceVille%20Detached/2.2.webp',
       '/assets/GraceVille%20Detached/2.webp',
       '/assets/GraceVille%20Detached/3.webp',
       '/assets/GraceVille%20Detached/4.webp',
