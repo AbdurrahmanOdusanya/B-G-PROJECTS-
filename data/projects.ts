@@ -6,35 +6,50 @@ export interface Project {
   price: string;
   status: 'Completed' | 'Ongoing' | 'Upcoming';
   propertyType: string;
-  bedrooms: number;
-  bathrooms: number;
-  floors: number;
+  bedrooms: number | string;
+  bathrooms?: number;
+  typology: 'Detached' | 'Semi-Detached' | 'Semi detached' | string;
+  floors: number | string;
   size: string;
   tagline: string;
   description: string;
   heroImage: string;
   secondaryImage: string;
+  gallery?: string[];
   year: string;
   aspectRatio?: string;
 }
 
 export const FEATURED_PROJECTS: Project[] = [
   {
-    id: 'aether-heights',
-    slug: 'aether-heights',
-    name: 'Aether Heights',
-    location: 'Old Ikoyi, Lagos',
-    price: '$3,450,000',
+    id: 'graceville',
+    slug: 'graceville',
+    name: 'GraceVille',
+    location: 'Egin Street, Ojodu Berger',
+    price: '$650,000',
     status: 'Completed',
-    propertyType: 'Pavilion Villa',
-    bedrooms: 4,
-    bathrooms: 5,
-    floors: 2,
-    size: '380 m²',
-    tagline: 'Linear glass pavilions and cantilevered stone volumes overlooking serene courtyard gardens.',
-    description: 'An architectural composition of fair-faced concrete, floor-to-ceiling acoustic glass, and warm travertine. Features double-height atrium living, a sunken conversation pit, and private subterranean gallery parking.',
-    heroImage: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1600&auto=format&fit=crop',
-    secondaryImage: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=1200&auto=format&fit=crop',
+    propertyType: 'Semi detached',
+    bedrooms: '3 suites + BQ',
+    bathrooms: 4,
+    typology: 'Semi detached',
+    floors: '2 floors',
+    size: '210m²',
+    tagline: 'Refined semi-detached residence crafted for modern family living with timeless architectural elegance.',
+    description: 'GraceVille presents exceptional modern living at Egin Street, Ojodu Berger. Thoughtfully designed across 2 floors with 210m² of optimal architectural space, featuring 3 suites plus dedicated BQ, premium craftsmanship, and effortless comfort.',
+    heroImage: '/assets/GraceVille/main.webp',
+    secondaryImage: '/assets/GraceVille/1.webp',
+    gallery: [
+      '/assets/GraceVille/1.webp',
+      '/assets/GraceVille/2.webp',
+      '/assets/GraceVille/3.webp',
+      '/assets/GraceVille/4.webp',
+      '/assets/GraceVille/5.webp',
+      '/assets/GraceVille/6.webp',
+      '/assets/GraceVille/7.webp',
+      '/assets/GraceVille/8.webp',
+      '/assets/GraceVille/9.webp',
+      '/assets/GraceVille/10.webp',
+    ],
     year: '2025',
   },
   {
@@ -47,6 +62,7 @@ export const FEATURED_PROJECTS: Project[] = [
     propertyType: 'Waterfront Residence',
     bedrooms: 3,
     bathrooms: 4,
+    typology: 'Semi-Detached',
     floors: 1,
     size: '320 m²',
     tagline: 'Monolithic infinity pool terrace reflecting minimalist dark-concrete architectural planes.',
@@ -65,6 +81,7 @@ export const FEATURED_PROJECTS: Project[] = [
     propertyType: 'Architectural Triplex',
     bedrooms: 5,
     bathrooms: 6,
+    typology: 'Detached',
     floors: 3,
     size: '510 m²',
     tagline: 'Triple-tier geometric residence framed in pure white limestone and dark anodized bronze.',
@@ -83,6 +100,7 @@ export const FEATURED_PROJECTS: Project[] = [
     propertyType: 'Coastal Sky Estate',
     bedrooms: 4,
     bathrooms: 5,
+    typology: 'Semi-Detached',
     floors: 2,
     size: '460 m²',
     tagline: 'Panoramic floor-to-ceiling glass sanctuary capturing unbroken ocean horizon sunsets.',

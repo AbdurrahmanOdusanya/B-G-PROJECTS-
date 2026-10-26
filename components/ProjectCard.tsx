@@ -91,9 +91,9 @@ export function ProjectCard({ project, index, onSelectProject }: ProjectCardProp
           <MapPin className="w-3.5 h-3.5 text-neutral-500" />
           <span>{project.location}</span>
           <span aria-hidden="true" className="text-neutral-600">·</span>
-          <span>{project.bedrooms} Beds</span>
+          <span>{typeof project.bedrooms === 'number' ? `${project.bedrooms} Beds` : project.bedrooms}</span>
           <span aria-hidden="true" className="text-neutral-600">·</span>
-          <span>{project.bathrooms} Baths</span>
+          <span>{project.typology || 'Detached'}</span>
           <span aria-hidden="true" className="text-neutral-600">·</span>
           <span>{project.size}</span>
         </div>
