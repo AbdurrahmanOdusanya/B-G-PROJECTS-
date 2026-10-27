@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'motion/react';
-import { X, ArrowRight, BedDouble, Home, Layers, Maximize2, Images, ExternalLink, Expand } from 'lucide-react';
+import { X, ArrowRight, BedDouble, Home, Car, Maximize2, Images, ExternalLink, Expand } from 'lucide-react';
 import { FEATURED_PROJECTS, Project } from '@/data/projects';
 import { RevealOnScroll } from './RevealOnScroll';
 import { ProjectGalleryLightbox } from './ProjectGalleryLightbox';
@@ -178,11 +178,11 @@ export function FeaturedProjects({ onEnquireForProject }: FeaturedProjectsProps)
                   </div>
 
                   <div className="flex items-center space-x-2.5 sm:space-x-3">
-                    <Layers className="w-4 h-4 sm:w-5 sm:h-5 text-neutral-400 shrink-0" />
+                    <Car className="w-4 h-4 sm:w-5 sm:h-5 text-neutral-400 shrink-0" />
                     <div>
-                      <div className="text-[9px] sm:text-[10px] uppercase tracking-wider font-inter text-neutral-400">Level</div>
+                      <div className="text-[9px] sm:text-[10px] uppercase tracking-wider font-inter text-neutral-400">Parking</div>
                       <div className="text-xs sm:text-sm font-semibold text-neutral-900">
-                        {typeof selectedProject.floors === 'number' ? `${selectedProject.floors} floors` : selectedProject.floors}
+                        {selectedProject.parking || '2 Cars'}
                       </div>
                     </div>
                   </div>
@@ -211,7 +211,7 @@ export function FeaturedProjects({ onEnquireForProject }: FeaturedProjectsProps)
                   <h4 className="text-xs font-inter font-semibold tracking-[0.16em] text-neutral-400 mb-3">
                     Architectural Profile
                   </h4>
-                  <p className="text-neutral-700 font-inter text-base sm:text-lg leading-relaxed font-light">
+                  <p className="text-neutral-700 font-inter text-base sm:text-lg leading-relaxed font-light whitespace-pre-line">
                     {selectedProject.description}
                   </p>
                 </div>

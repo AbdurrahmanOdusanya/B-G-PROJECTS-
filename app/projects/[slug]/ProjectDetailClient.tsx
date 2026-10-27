@@ -9,7 +9,7 @@ import {
   ArrowRight,
   BedDouble,
   Home,
-  Layers,
+  Car,
   Maximize2,
   MapPin,
   Calendar,
@@ -163,10 +163,10 @@ export default function ProjectDetailClient({ project }: ProjectDetailClientProp
             </div>
 
             <div className="flex items-center space-x-3 p-2">
-              <Layers className="w-5 h-5 text-neutral-400 shrink-0" />
+              <Car className="w-5 h-5 text-neutral-400 shrink-0" />
               <div>
-                <div className="text-[10px] uppercase font-inter tracking-wider text-neutral-400">Level</div>
-                <div className="text-sm font-semibold text-neutral-900">{project.floors}</div>
+                <div className="text-[10px] uppercase font-inter tracking-wider text-neutral-400">Parking</div>
+                <div className="text-sm font-semibold text-neutral-900">{project.parking || '2 Cars'}</div>
               </div>
             </div>
 
@@ -209,7 +209,7 @@ export default function ProjectDetailClient({ project }: ProjectDetailClientProp
             </div>
 
             <div className="lg:col-span-8 space-y-4 text-neutral-700 text-base sm:text-lg font-light leading-relaxed">
-              <p>{project.description}</p>
+              <p className="whitespace-pre-line">{project.description}</p>
               <p>
                 Every detail in {project.name} has been engineered to maximize natural illumination, airflow,
                 and functional elegance. From the refined spatial layout across {project.floors} to the
