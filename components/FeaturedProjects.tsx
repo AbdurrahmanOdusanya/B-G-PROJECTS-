@@ -37,8 +37,8 @@ export function FeaturedProjects({ onEnquireForProject }: FeaturedProjectsProps)
         </div>
 
         {/* Project Cards Grid with Large Image-Led Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10 lg:gap-12">
-          {FEATURED_PROJECTS.slice(0, 3).map((project, idx) => (
+        <div className={`grid grid-cols-1 ${FEATURED_PROJECTS.length === 2 ? 'md:grid-cols-2 max-w-5xl' : 'md:grid-cols-2 lg:grid-cols-3'} gap-8 sm:gap-10 lg:gap-14 mx-auto`}>
+          {FEATURED_PROJECTS.map((project, idx) => (
             <RevealOnScroll
               key={project.id}
               delay={idx * 0.08}
